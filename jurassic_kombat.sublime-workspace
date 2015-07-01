@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"on",
+				"onPlayBtnRelease"
+			],
+			[
+				"play",
+				"playBtn"
+			],
+			[
 				"ht",
 				"http"
 			],
@@ -142,10 +150,6 @@
 			[
 				"pack",
 				"packageJson"
-			],
-			[
-				"play",
-				"playFrettedNotes"
 			],
 			[
 				"backgrou",
@@ -510,10 +514,6 @@
 			[
 				"for",
 				"forEach"
-			],
-			[
-				"vali",
-				"validChordTypes"
 			]
 		]
 	},
@@ -712,12 +712,16 @@
 	},
 	"file_history":
 	[
+		"/Users/kevinlint/Dev/jurassic kombat/Jurassic Kombat/main.lua",
+		"/Users/kevinlint/Dev/jurassic_kombat/Jurassic Kombat/menu.lua",
+		"/Users/kevinlint/Dev/jurassic_kombat/Jurassic Kombat/level1.lua",
+		"/Users/kevinlint/Dev/jurassic kombat/Jurassic Kombat/lesson.lua",
+		"/Users/kevinlint/Dev/jurassic kombat/Jurassic Kombat/menu.lua",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/src/pages/joesneva/index.jst",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/src/parts/albums.css",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/src/pages/joesneva/index.yml",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/package.json",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/src/parts/footer.jst",
-		"/Users/kevinlint/Dev/jurassic kombat/Jurassic Kombat/main.lua",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/src/patterns/buttons.css",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/src/patterns/typography.css",
 		"/Users/kevinlint/Dev/rd/linttraprecords.com/src/patterns/main.jst",
@@ -835,11 +839,7 @@
 		"/Users/kevinlint/Dev/rd/simply_social_challenge/bin/dev.js",
 		"/Users/kevinlint/Dev/rd/simply_social_challenge/README.md",
 		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_menu.scss",
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_buttons.scss",
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_forms.scss",
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_reset.scss",
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_base.scss",
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/html/index.yml"
+		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_buttons.scss"
 	],
 	"find":
 	{
@@ -847,7 +847,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 106.0,
 		"where_history":
 		[
 			"/Users/kevinlint/Dev/rd/linttraprecords.com",
@@ -927,6 +927,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"background",
+			"Game Title",
 			"footer",
 			"// MODULES\nvar inquirer = require(\"inquirer\");\nvar fs = require('fs');\nvar util = require('./lib/util.js');\n\nvar questions = [\n    {\n        name: 'type',\n        type: 'list',\n        message: 'What would you like to scaffold?',\n        choices: ['PIECE', 'PART', 'PAGE', 'EXIT'],\n        default: 'PIECE',\n        filter: function(input) {\n            if(input === 'EXIT') {\n                process.exit();\n            } else {\n                return input;\n            }\n        }\n    },\n\n    {\n        name:'entity',\n        type: 'input',\n        message: \"What's the name of this object?\",\n        default: ''\n    }\n];\n\ninquirer.prompt(questions, function( answers ) {\n    switch(answers.type) {\n        case 'PIECE':\n            var root = 'pieces';\n            break;\n        case 'PART':\n            var root = 'parts';\n            break;\n        case 'PAGE':\n            var root = 'pages';\n            break;\n    }\n\n    // create vars\n    var jst = './src/' + root + '/' + answers.entity + '.jst';\n    var js  = './src/' + root + '/' + answers.entity + '.js';\n    var css = './src/' + root + '/' + answers.entity + '.css';\n    var yml = './src/' + root + '/' + answers.entity + '.yml';\n\n    // get package.json and update it\n    var packageJson = JSON.parse(fs.readFileSync('./package.json', { encoding: 'utf8' }));\n    packageJson.build[root].elements.push(answers.entity);\n    var updates = {}; \n    updates.build = {};\n    updates.build[root] = packageJson.build[root].elements;\n    util.updateJSONpreserveFormat('./package.json', updates);\n\n    // create files\n    if (!fs.existsSync(jst)) {\n        util.ensureFilePath(jst, 0);\n        fs.writeFileSync(jst,'');\n        fs.writeFileSync(js,'');\n        fs.writeFileSync(css,'');\n        fs.writeFileSync(yml,'');\n    } else {\n        util.cliMessage('ALERT', answers.entity + ' already exist', 'red');\n    }\n});",
 			"main.layout",
@@ -1052,9 +1054,7 @@
 			"is_authenticated",
 			"path.",
 			"pages",
-			"html_param",
-			"filter",
-			"form."
+			"html_param"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1262,6 +1262,10 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"/Users/kevinlint/Dev/jurassic kombat/jurassic-kombat.sublime-project"
+			]
 		],
 		"width": 380.0
 	},
