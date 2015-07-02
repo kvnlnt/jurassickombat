@@ -25,22 +25,54 @@ function scene:create( event )
 
 	local sceneGroup = self.view
 
-	-- create a grey rectangle as the backdrop
-	local background = display.newRect( 0, 0, screenW, screenH )
-	background.anchorX = 0
-	background.anchorY = 0
-	background:setFillColor( .5 )
-	
-	-- make a crate (off-screen), position it, and rotate slightly
-	local crate = display.newImageRect( "crate.png", 90, 90 )
-	crate.x, crate.y = 160, -100
-	crate.rotation = 15
-	
-	-- add physics to the crate
-	physics.addBody( crate, { density=1.0, friction=0.3, bounce=0.3 } )
+	-- create triceratops
+	-- local dino = display.newImageRect("images/trex-wireframe.png", 760, 303)
+	-- dino.anchorX = 0;
+	-- dino.anchorY = 1;
+	-- dino.x, dino.y = 0, display.contentHeight;
+
+
+	local options =
+	{
+	    --required parameters
+	    width = 380,
+	    height = 300,
+	    numFrames = 2,
+
+	    --optional parameters; used for scaled content support
+	    sheetContentWidth = 760,  -- width of original 1x size of entire sheet
+	    sheetContentHeight = 303  -- height of original 1x size of entire sheet
+	}
+	local dinoSheet = graphics.newImageSheet( "images/trex-wireframe.png", options )
+
+	local sequenceData =
+	{
+	    name="walking",
+	    frames= { 1,2 }, -- frame indexes of animation, in image sheet
+	    time = 240,
+	    loopCount = 1        -- Optional ; default is 0
+	}
+
+	local dino = display.newSprite( dinoSheet, sequenceData )
+	dino.x, dino.y = 150, display.contentHeight - 150
+
+	-- Called when a key event has been received
+	local function onKeyEvent( event )
+	    if(event.keyName == "l") then
+	    	dino.x = dino.x + 30
+	    end
+	    if(event.keyName == "j") then
+	    	dino.x = dino.x - 30
+	    end
+	    dino:play()
+	    return false
+	end
+
+	-- Add the key event listener
+	Runtime:addEventListener( "key", onKeyEvent )
 	
 	-- create a grass object and add physics (with custom shape)
-	local grass = display.newImageRect( "grass.png", screenW, 82 )
+	local grass = display.newImageRect( "images/grass.png", screenW, 82 )
 	grass.anchorX = 0
 	grass.anchorY = 1
 	grass.x, grass.y = 0, display.contentHeight
@@ -50,9 +82,9 @@ function scene:create( event )
 	physics.addBody( grass, "static", { friction=0.3, shape=grassShape } )
 	
 	-- all display objects must be inserted into group
-	sceneGroup:insert( background )
+	-- sceneGroup:insert( background )
 	sceneGroup:insert( grass)
-	sceneGroup:insert( crate )
+	sceneGroup:insert( dino )
 end
 
 
