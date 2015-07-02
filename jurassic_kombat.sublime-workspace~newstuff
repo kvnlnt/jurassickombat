@@ -712,11 +712,8 @@
 	},
 	"file_history":
 	[
-<<<<<<< HEAD:jurassic_kombat.sublime-workspace
-=======
 		"/Users/kevinlint/Dev/jurassic_kombat/.gitignore",
 		"/Users/kevinlint/Dev/jurassic_kombat/jurassic-kombat.sublime-project",
->>>>>>> newstuff:jurassic-kombat.sublime-workspace
 		"/Users/kevinlint/Dev/jurassic kombat/Jurassic Kombat/main.lua",
 		"/Users/kevinlint/Dev/jurassic_kombat/Jurassic Kombat/menu.lua",
 		"/Users/kevinlint/Dev/jurassic_kombat/Jurassic Kombat/level1.lua",
@@ -842,13 +839,7 @@
 		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_settings.scss",
 		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_media-queries.scss",
 		"/Users/kevinlint/Dev/rd/simply_social_challenge/bin/dev.js",
-<<<<<<< HEAD:jurassic_kombat.sublime-workspace
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/README.md",
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_menu.scss",
-		"/Users/kevinlint/Dev/rd/simply_social_challenge/src/styles/_buttons.scss"
-=======
 		"/Users/kevinlint/Dev/rd/simply_social_challenge/README.md"
->>>>>>> newstuff:jurassic-kombat.sublime-workspace
 	],
 	"find":
 	{
@@ -856,7 +847,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 106.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/kevinlint/Dev/rd/linttraprecords.com",
@@ -1273,11 +1264,7 @@
 		[
 			[
 				"",
-<<<<<<< HEAD:jurassic_kombat.sublime-workspace
 				"/Users/kevinlint/Dev/jurassic kombat/jurassic-kombat.sublime-project"
-=======
-				"/Users/kevinlint/Dev/jurassic_kombat/jurassic_kombat.sublime-project"
->>>>>>> newstuff:jurassic-kombat.sublime-workspace
 			]
 		],
 		"width": 380.0

@@ -33,17 +33,17 @@ function scene:create( event )
 	-- e.g. add display objects to 'sceneGroup', add touch listeners, etc.
 
 	-- load background sound
-	local backgroundSound = audio.loadSound( "background.wav" )
+	local backgroundSound = audio.loadSound( "sounds/background.wav" )
 	audio.play(backgroundSound, {loops=-1})
 
 	-- display a background image
-	local background = display.newImageRect( "background.jpg", display.contentWidth, display.contentHeight )
+	local background = display.newImageRect( "images/background.jpg", display.contentWidth, display.contentHeight )
 	background.anchorX = 0
 	background.anchorY = 0
 	background.x, background.y = 0, 0
 	
 	-- create/position logo/title image on upper-half of the screen
-	local titleLogo = display.newImageRect( "logo.png", 552, 287 )
+	local titleLogo = display.newImageRect( "images/logo.png", 552, 287 )
 	titleLogo.x = display.contentWidth * 0.5
 	titleLogo.y = 300
 	
