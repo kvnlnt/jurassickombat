@@ -9,7 +9,9 @@ local scene = composer.newScene()
 
 -- include Corona's "physics" library
 local physics = require "physics"
-physics.start(); physics.pause()
+physics.start() 
+physics.pause()
+physics.setGravity( 0, 50 )
 
 --------------------------------------------
 
@@ -30,45 +32,77 @@ function scene:create( event )
 	-- dino.anchorX = 0;
 	-- dino.anchorY = 1;
 	-- dino.x, dino.y = 0, display.contentHeight;
-
-
-	local options =
-	{
-	    --required parameters
-	    width = 380,
-	    height = 300,
-	    numFrames = 2,
-
-	    --optional parameters; used for scaled content support
-	    sheetContentWidth = 760,  -- width of original 1x size of entire sheet
-	    sheetContentHeight = 303  -- height of original 1x size of entire sheet
-	}
-	local dinoSheet = graphics.newImageSheet( "images/trex-wireframe.png", options )
+	
+	local dinoSheet = graphics.newImageSheet( "images/ceratosaurus.png", {
+	    width = 200,
+	    height = 200,
+	    numFrames = 3,
+	    sheetContentWidth = 600,  -- width of original 1x size of entire sheet
+	    sheetContentHeight = 200  -- height of original 1x size of entire sheet
+	})
 
 	local sequenceData =
 	{
-	    name="walking",
-	    frames= { 1,2 }, -- frame indexes of animation, in image sheet
-	    time = 240,
-	    loopCount = 1        -- Optional ; default is 0
+	    name="stance",
+	    start=1,
+	    count=3,
+	    time = 500,
+	    loopCount = 0
 	}
 
 	local dino = display.newSprite( dinoSheet, sequenceData )
-	dino.x, dino.y = 150, display.contentHeight - 150
+	dino.x, dino.y = 200, display.contentHeight - 200
+	dino:play("walking")
+	physics.addBody(dino, { density=3.0, friction=0.5, bounce=0.3 })
+
+	local movingRight = false
+	local function handleMoveRight( event )
+	   if ( movingRight == true ) then
+	     	dino.x = dino.x + 20
+	   end
+	end
+	Runtime:addEventListener( "enterFrame", handleMoveRight )
+
+	local movingLeft = false
+	local function handleMoveLeft( event )
+	   if ( movingLeft == true ) then
+	     	dino.x = dino.x - 20
+	   end
+	end
+	Runtime:addEventListener( "enterFrame", handleMoveLeft )
 
 	-- Called when a key event has been received
 	local function onKeyEvent( event )
-	    if(event.keyName == "l") then
-	    	dino.x = dino.x + 30
+		-- Print which key was pressed down/up
+	    -- local message = "Key '" .. event.keyName .. "' was pressed " .. event.phase
+
+	    if(event.keyName == "l" and event.phase == "down") then
+	    	movingRight = true
 	    end
-	    if(event.keyName == "j") then
-	    	dino.x = dino.x - 30
+
+	    if(event.keyName == "l" and event.phase == "up") then
+	    	movingRight = false
 	    end
+
+	    if(event.keyName == "j" and event.phase == "down") then
+	    	movingLeft = true
+	    end
+
+	    if(event.keyName == "j" and event.phase == "up") then
+	    	movingLeft = false
+	    end
+
+	    if(event.keyName == "b" and event.phase == "down") then
+	    	if(dino.y <= (display.contentHeight - 150)) then
+				dino:setLinearVelocity( 0, 3000 )
+			end
+	    end
+
 	    dino:play()
 	    return false
 	end
 
-	-- Add the key event listener
+	-- -- Add the key event listener
 	Runtime:addEventListener( "key", onKeyEvent )
 	
 	-- create a grass object and add physics (with custom shape)
